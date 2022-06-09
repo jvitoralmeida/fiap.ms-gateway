@@ -9,7 +9,7 @@ spec:
   ports:
   - protocol: 'TCP'
     port: 80
-    targetPort: 8080
+    targetPort: 8081
   type: LoadBalancer
 ---
 #api deploy
@@ -35,6 +35,6 @@ spec:
         - name: fiap-ms-gateway
           image: jvitoralmeida/fiap.ms-gateway:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8081
               protocol: TCP
           imagePullPolicy: Always

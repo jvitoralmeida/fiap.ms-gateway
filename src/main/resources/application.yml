@@ -6,10 +6,10 @@ spring:
     gateway:
       routes:
         - id: user
-          uri: http://34.139.152.137/
+          uri: http://fiap-ms-user/
           predicates:
             - Path=/user/**
         - id: wallet
-          uri: http://35.243.143.96/
+          uri: http://fiap-ms-wallet/
           predicates:
             - Path=/wallet/**
