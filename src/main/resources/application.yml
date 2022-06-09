@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          uri: http://34.139.152.137/
+          predicates:
+            - Path=/user/**
+        - id: wallet
+          uri: http://35.243.143.96/
+          predicates:
+            - Path=/wallet/**

@@ -1,0 +1,40 @@
+#api service
+apiVersion: v1
+kind: Service
+metadata:
+  name: fiap-ms-gateway
+spec:
+  selector:
+    app: fiap-ms-gateway
+  ports:
+  - protocol: 'TCP'
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+---
+#api deploy
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fiap-ms-gateway
+  labels:
+    app: fiap-ms-gateway
+spec:
+  selector:
+    matchLabels:
+        app: fiap-ms-gateway
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: fiap-ms-gateway
+    spec:
+      containers:
+        - name: fiap-ms-gateway
+          image: jvitoralmeida/fiap.ms-gateway:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          imagePullPolicy: Always
